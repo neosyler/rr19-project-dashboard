@@ -1,0 +1,17 @@
+<div class="division">
+  <div class="division-header">
+    <div class="abbr">{{division.abbr}}</div>
+    <div class="title">{{name}}</div>
+  </div>
+  <div class="division-content">
+    <ul>
+      <li *ngFor="let budget of division.budgets">
+        <span class="owner">{{budget.owner}}</span>
+        <span class="total">{{budget.total | currency}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="division-footer">
+    {{division.total | currency}}
+  </div>
+</div>

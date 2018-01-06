@@ -1,0 +1,32 @@
+<header>
+  <h1>{{title}}</h1>
+  <input type="text" name="search" value="" placeholder="Search..." />
+  <button><span class="fa fa-filter"></span></button>
+</header>
+<section>
+  <!--Summary-->
+  <ul class="summary">
+    <li *ngFor="let obj of divisions | keys">
+      <app-division [name]="obj.key" [records]="obj.value"></app-division>
+    </li>
+  </ul>
+
+  <!--Record Listing-->
+  <ul class="records">
+    <li class="column-titles">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">DIVISION</div>
+        <div class="col">TITLE</div>
+        <div class="col">BUDGET</div>
+        <div class="col">STATUS</div>
+        <div class="col">PROJECT OWNER</div>
+        <div class="col">CREATED</div>
+        <div class="col">MODIFIED</div>
+      </div>
+    </li>
+    <li *ngFor="let record of records">
+      <app-record [record]="record"></app-record>
+    </li>
+  </ul>
+</section>

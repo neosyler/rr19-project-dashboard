@@ -1,0 +1,85 @@
+@import '../sass/_variables.scss';
+@import '../sass/_mixins.scss';
+
+header {
+  background: $theme-bg;
+  color: $theme-fg;
+
+  button, input, h1 {
+    display: inline-block;
+  }
+
+  button, input {
+    padding: 8px;
+    position: relative;
+    top: -6px;
+  }
+
+  button {
+    top: -2px;
+
+    .fa {
+      color: #FFF;
+    }
+  }
+
+  input {
+    min-width: 300px;
+  }
+
+  h1 {
+    padding: 10px;
+    font-weight: normal;
+  }
+}
+
+section {
+  font-size: 14px;
+
+  ul {
+    @include ul-reset();
+    clear: both;
+
+    li {
+      @include ul-reset();
+      @include border-radius(8px);
+    }
+
+    &.records {
+      li {
+        font-weight: bold;
+        line-height: 40px;
+        min-height: 40px;
+        margin-top: 15px;
+
+        &:nth-child(odd) {
+          background: #c8c8c8;
+        }
+
+        &:nth-child(even) {
+          background: #dbdbdb;
+        }
+
+        &.column-titles {
+          background: transparent;
+
+          .col {
+            text-align: left;
+          }
+        }
+
+        button {
+          padding: 0 10px;
+        }
+
+        .col:first-child {
+          text-align: center;
+        }
+
+        .fa {
+          line-height: 40px;
+        }
+      }
+    }
+  }
+}
