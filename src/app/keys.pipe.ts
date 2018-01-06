@@ -5,6 +5,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class KeysPipe implements PipeTransform {
 
+  /**
+   * This takes an object and transforms it into an array of key and value pairs
+   *
+   * @param value
+   * @param args
+   * @returns {any}
+   */
   transform(value: any, args?: any): any {
     let keys = [];
 
