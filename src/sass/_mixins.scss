@@ -12,6 +12,17 @@
   box-shadow: $shadow;
 }
 
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transition-default($speed: .3s) {
+  @include transition(all $speed ease-in-out);
+}
+
 @mixin ul-reset() {
   list-style-type: none;
   margin: 0;

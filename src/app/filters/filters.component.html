@@ -1,0 +1,27 @@
+<div class="filters">
+  <div class="filters-header">
+    <h2>Filters</h2>
+    <span class="fa fa-times"></span>
+  </div>
+  <div class="filters-content">
+    <div *ngFor="let filter of filters" [ngSwitch]="filter.type" class="filter">
+      <label>{{filter.prettyKey}}:</label>
+      <div *ngSwitchCase="'date'" class="date-range">
+          From:
+          <ng-datepicker [(ngModel)]="filter.fromDate"></ng-datepicker>
+          To:
+          <ng-datepicker [(ngModel)]="filter.toDate"></ng-datepicker>
+      </div>
+      <div *ngSwitchCase="'number'">
+        <input type="number" name="number" [(ngModel)]="filter.value" value="0" />
+      </div>
+      <div *ngSwitchDefault>
+        <input type="string" name="string" [(ngModel)]="filter.value" value="" />
+      </div>
+    </div>
+    <div>
+      <button class="primary" (click)="filter()">Apply</button>
+      <button class="primary" (click)="clear()">Clear</button>
+    </div>
+  </div>
+</div>

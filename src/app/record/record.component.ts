@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 /**
  * Record Component
@@ -16,6 +16,16 @@ export class RecordComponent implements OnInit {
    * Record with data to display in the view
    */
   @Input() record: object;
+  /**
+   * Event to update record through parent
+   *
+   * @type {EventEmitter<any>}
+   */
+  @Output() updateRecord: EventEmitter<any> = new EventEmitter<any>();
+  /**
+   * Whether this record is currently being edited or not
+   */
+  editing: boolean;
 
   /**
    * Sets up this class
@@ -26,6 +36,15 @@ export class RecordComponent implements OnInit {
    * Initializes component / view data
    */
   ngOnInit() {
+    this.editing = false;
+  }
+
+  /**
+   * Saves updates made to this record
+   */
+  save() {
+    this.updateRecord.emit(this.record);
+    this.editing = false;
   }
 
 }

@@ -1,13 +1,16 @@
 <header>
   <h1>{{title}}</h1>
-  <input type="text" name="search" value="" placeholder="Search..." />
-  <button><span class="fa fa-filter"></span></button>
+  <input type="text" name="search" value="" placeholder="Search..." [(ngModel)]="searchText"
+         (keyup)="search(searchText)"/>
+  <button (click)="showFilters = !showFilters" title="Filter"><span class="fa fa-filter"></span></button>
+  <button><span class="fa fa-download" title="Export Data"></span></button>
 </header>
 <section>
   <!--Summary-->
   <ul class="summary">
     <li *ngFor="let obj of divisions | keys">
-      <app-division [name]="obj.key" [records]="obj.value"></app-division>
+      <app-division [name]="obj.key" [records]="obj.value" (click)="filterByDivision(obj.key, obj.value)"
+                    [selected]="obj.value.selected"></app-division>
     </li>
   </ul>
 
@@ -26,7 +29,10 @@
       </div>
     </li>
     <li *ngFor="let record of records">
-      <app-record [record]="record"></app-record>
+      <app-record [record]="record" (updateRecord)="updateRecord($event)"></app-record>
     </li>
   </ul>
 </section>
+<div *ngIf="showFilters" class="filter-overlay" (click)="showFilters = !showFilters"></div>
+<app-filters [class.visible]="showFilters" [filters]="filters" (filterRecords)="filterRecords($event)"></app-filters>
+

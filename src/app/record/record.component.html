@@ -1,7 +1,8 @@
 <div class="row record">
   <div class="col">
-    <button><span class="fa fa-pencil-square-o"></span></button>
-    <button><span class="fa fa-folder-open"></span></button>
+    <button *ngIf="!editing" title="Edit record"><span class="fa fa-pencil-square-o" (click)="editing = !editing"></span></button>
+    <button *ngIf="!editing" title="Open record"><span class="fa fa-folder-open"></span></button>
+    <button *ngIf="editing" title="Save record" (click)="save()"><span class="fa fa-floppy-o"></span></button>
   </div>
   <div class="col">
     {{record.division}}
@@ -10,13 +11,16 @@
     {{record.title}}
   </div>
   <div class="col">
-    {{record.budget | currency}}
+    <span *ngIf="!editing">{{record.budget | currency}}</span>
+    <input *ngIf="editing" type="number" [(ngModel)]="record.budget" />
   </div>
   <div class="col">
-    {{record.status}}
+    <span *ngIf="!editing">{{record.status}}</span>
+    <input *ngIf="editing" type="text" [(ngModel)]="record.status" />
   </div>
   <div class="col">
-    {{record.project_owner}}
+    <span *ngIf="!editing">{{record.project_owner}}</span>
+    <input *ngIf="editing" type="text" [(ngModel)]="record.project_owner" />
   </div>
   <div class="col">
     {{record.created}}

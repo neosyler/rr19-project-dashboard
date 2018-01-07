@@ -1,6 +1,19 @@
 @import '../sass/_variables.scss';
 @import '../sass/_mixins.scss';
 
+app-filters {
+  height: 100%;
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 400px;
+  @include transition-default();
+
+  &.visible {
+    right: 0;
+  }
+}
+
 header {
   background: $theme-bg;
   color: $theme-fg;
@@ -9,14 +22,17 @@ header {
     display: inline-block;
   }
 
-  button, input {
+  input {
     padding: 8px;
     position: relative;
     top: -6px;
   }
 
   button {
-    top: -2px;
+    float: right;
+    font-size: 2em;
+    line-height: 99px;
+    margin-right: 20px;
 
     .fa {
       color: #FFF;
@@ -56,10 +72,6 @@ section {
           background: #c8c8c8;
         }
 
-        &:nth-child(even) {
-          background: #dbdbdb;
-        }
-
         &.column-titles {
           background: transparent;
 
@@ -82,4 +94,15 @@ section {
       }
     }
   }
+}
+
+.filter-overlay {
+  background: rgba(0,0,0,.5);
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
 }

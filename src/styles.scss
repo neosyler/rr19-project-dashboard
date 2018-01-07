@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import './sass/_mixins.scss';
 @import './sass/_variables.scss';
 
 /**------------------------------------------------------------
@@ -16,6 +17,14 @@ button {
   border: 0;
   cursor: pointer;
   outline: none;
+
+  &.primary {
+    background: #CCC;
+    border: 1px solid #999;
+    padding: 8px 15px;
+    min-width: 75px;
+    @include border-radius(5px);
+  }
 }
 
 .row {
@@ -27,4 +36,27 @@ button {
   flex-grow: 0;
   flex-basis: 12.5%;
   width: 0;
+}
+
+
+.ngx-datepicker-container {
+  .ngx-datepicker-calendar-container {
+    top: 100%;
+    z-index: 10;
+
+    svg {
+      padding: 10px !important;
+    }
+
+    .topbar-container {
+      padding: 0 !important;
+    }
+  }
+
+  input.ngx-datepicker-input {
+    border: 1px solid #AAA !important;
+    padding: 10px !important;
+    width: 90% !important;
+    @include border-radius(5px);
+  }
 }

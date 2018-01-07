@@ -24,6 +24,10 @@ export class DivisionComponent implements OnInit {
    */
   @Input() records = [];
   /**
+   * Whether this division has been selected by the user
+   */
+  @Input() selected: string;
+  /**
    * Object containing summary data
    *
    * @type {Object}

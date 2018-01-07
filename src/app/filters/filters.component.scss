@@ -1,0 +1,55 @@
+@import '../../sass/_variables.scss';
+@import '../../sass/_mixins.scss';
+
+.filters {
+  background: #FFF;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  right: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  .filters-header {
+    background: $theme-bg;
+    color: $theme-fg;
+    padding: 0 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    .fa {
+      position: absolute;
+      top: 25px;
+      right: 15px;
+    }
+  }
+
+  .filters-content {
+    margin-top: 70px;
+    padding: 10px;
+
+    input {
+      border: 1px solid #AAA;
+      padding: 10px;
+      width: 90%;
+      @include border-radius(5px);
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .filter {
+      clear: both;
+      margin-bottom: 10px;
+    }
+  }
+
+  button {
+    float: left;
+    margin-right: 15px;
+  }
+}

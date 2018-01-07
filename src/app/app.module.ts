@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import { DivisionComponent } from './division/division.component';
 
 import { DataService } from './data.service';
 import { KeysPipe } from './keys.pipe';
+import { FiltersComponent } from './filters/filters.component';
 
 
 @NgModule({
@@ -15,10 +17,12 @@ import { KeysPipe } from './keys.pipe';
     AppComponent,
     RecordComponent,
     DivisionComponent,
-    KeysPipe
+    KeysPipe,
+    FiltersComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgDatepickerModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
