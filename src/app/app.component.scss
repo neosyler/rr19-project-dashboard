@@ -7,6 +7,7 @@ app-filters {
   right: -400px;
   top: 0;
   width: 400px;
+  z-index: 20;
   @include transition-default();
 
   &.visible {
@@ -17,6 +18,12 @@ app-filters {
 header {
   background: $theme-bg;
   color: $theme-fg;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 
   button, input, h1 {
     display: inline-block;
@@ -51,6 +58,7 @@ header {
 
 section {
   font-size: 14px;
+  margin-top: 105px;
 
   ul {
     @include ul-reset();
@@ -105,4 +113,22 @@ section {
   right: 0;
   top: 0;
   width: 100%;
+  z-index: 20;
+}
+
+.fixed-action-button {
+  background: $theme-bg;
+  bottom: 20px;
+  color: $theme-fg;
+  height: 50px;
+  position: fixed;
+  right: 30px;
+  text-align: center;
+  width: 50px;
+  @include border-radius(50px);
+
+  .fa {
+    font-size: 24px;
+    line-height: 50px;
+  }
 }

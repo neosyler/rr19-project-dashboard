@@ -33,6 +33,10 @@
     </li>
   </ul>
 </section>
+<!--Filters-->
 <div *ngIf="showFilters" class="filter-overlay" (click)="showFilters = !showFilters"></div>
 <app-filters [class.visible]="showFilters" [filters]="filters" (filterRecords)="filterRecords($event)"></app-filters>
-
+<!--Add Button-->
+<div class="fixed-action-button">
+  <span class="fa fa-plus"></span>
+</div>

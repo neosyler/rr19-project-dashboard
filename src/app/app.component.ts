@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
    *
    * @type {string}
    */
-  title = 'The Project Dashboard';
+  title = 'Project Dashboard';
 
   /**
    * Instantiates this class and adds a reference to the DataService
