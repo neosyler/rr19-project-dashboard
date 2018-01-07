@@ -220,13 +220,13 @@ export class AppComponent implements OnInit {
         initialRecord[k] = v;
       });
 
-      //create a new set of divisions 
+      //create a new set of divisions
       this.divisions = _.groupBy(this.initialRecords, 'division');
 
       //need to apply current 'selected' property value
-      _.each(currentDivisions, function (div, k) {
+      _.forIn(currentDivisions, function (div, k) {
         this.divisions[k].selected = div.selected;
-      });
+      }.bind(this));
     }
   }
 }
