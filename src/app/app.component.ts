@@ -53,7 +53,8 @@ export class AppComponent implements OnInit {
    *
    * @param {DataService} _data
    */
-  constructor(private _data: DataService) {}
+  constructor(private _data: DataService) {
+  }
 
   /**
    * Initializes class variables
@@ -76,7 +77,7 @@ export class AppComponent implements OnInit {
    * @param divisionObject
    */
   filterByDivision(divisionName, divisionObject) {
-    let selected = divisionObject.selected,
+    const selected = divisionObject.selected,
       filter = _.find(this.filters, {key: 'division'});
 
     this.resetDivisions();
@@ -85,8 +86,6 @@ export class AppComponent implements OnInit {
     if (filter) {
       filter.value = divisionObject.selected ? divisionName : '';
     }
-
-    console.log('filter', divisionObject.selected, filter);
 
     this.filterRecords(this.filters);
   }
@@ -107,7 +106,7 @@ export class AppComponent implements OnInit {
 
       _.each(filters, function (filter) {
         if (filter.type === 'date') {
-          let recDate = new Date(rec[filter.key]);
+          const recDate = new Date(rec[filter.key]);
 
           if (returnVal && typeof filter.fromDate === 'object') {
             returnVal = recDate >= filter.fromDate;
@@ -168,11 +167,12 @@ export class AppComponent implements OnInit {
    * @param record
    */
   setupFilters(record) {
-    let filters = [];
-    let keys = Object.keys(record);
+    const filters = [],
+      keys = Object.keys(record),
+      regex = /^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$/gi;
 
     _.each(keys, function (key) {
-      let formattedKey = _.capitalize(_.words(key).join(' '));
+      const formattedKey = _.capitalize(_.words(key).join(' '));
 
       if (typeof record[key] === 'number') {
         filters.push({
@@ -182,7 +182,7 @@ export class AppComponent implements OnInit {
           initialValue: '',
           value: ''
         });
-      } else if (/^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$/gi.exec(record[key])) {
+      } else if (regex.exec(record[key])) {
         filters.push({
           key: key,
           prettyKey: formattedKey,
@@ -212,7 +212,7 @@ export class AppComponent implements OnInit {
    * @param record
    */
   updateRecord(record) {
-    let initialRecord = _.find(this.initialRecords, {recordId: record.recordId});
+    const initialRecord = _.find(this.initialRecords, {recordId: record.recordId});
 
     if (initialRecord) {
       _.forIn(record, function (v, k) {

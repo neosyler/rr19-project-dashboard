@@ -13,10 +13,12 @@ export class KeysPipe implements PipeTransform {
    * @returns {any}
    */
   transform(value: any, args?: any): any {
-    let keys = [];
+    const keys = [];
 
-    for (let key in value) {
-      keys.push({key: key, value: value[key]});
+    for (const key in value) {
+      if (value.hasOwnProperty(key)) {
+        keys.push({key: key, value: value[key]});
+      }
     }
 
     return keys;
