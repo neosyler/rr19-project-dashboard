@@ -208,7 +208,7 @@ export class AppComponent implements OnInit {
 
   /**
    * Updates a record and updates the summary totals
-   * 
+   *
    * @param record
    */
   updateRecord(record) {
