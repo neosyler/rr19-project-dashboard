@@ -219,7 +219,7 @@ export class AppComponent implements OnInit {
         initialRecord[k] = v;
       });
 
-      this.divisions = _.groupBy(this.records, 'division');
+      this.divisions = _.groupBy(this.initialRecords, 'division');
     }
   }
 }
