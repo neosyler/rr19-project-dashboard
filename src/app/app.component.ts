@@ -212,14 +212,21 @@ export class AppComponent implements OnInit {
    * @param record
    */
   updateRecord(record) {
-    const initialRecord = _.find(this.initialRecords, {recordId: record.recordId});
+    const initialRecord = _.find(this.initialRecords, {recordId: record.recordId}),
+      currentDivisions = _.clone(this.divisions);
 
     if (initialRecord) {
       _.forIn(record, function (v, k) {
         initialRecord[k] = v;
       });
 
+      //create a new set of divisions 
       this.divisions = _.groupBy(this.initialRecords, 'division');
+
+      //need to apply current 'selected' property value
+      _.each(currentDivisions, function (div, k) {
+        this.divisions[k].selected = div.selected;
+      });
     }
   }
 }
