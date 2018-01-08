@@ -13,6 +13,7 @@ export class DataService {
 
   /**
    * Record ID Counter for assigning unique record IDs
+   *
    * @type {number}
    */
   private recordIdCounter = 1;
